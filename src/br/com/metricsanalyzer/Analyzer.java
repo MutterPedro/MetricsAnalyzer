@@ -58,7 +58,7 @@ public class Analyzer {
 				
 				FileWriter arq = new FileWriter(folder.getPath()+"/"+name); 
 				PrintWriter gravarArq = new PrintWriter(arq); 
-				gravarArq.printf("Arquivo texto resultante do processamento do "+listOfHtml.get(i).getName() +" gerado pelo plugin CodePro\nCAMPOS;avg/value;stddev;max\n\n");
+				gravarArq.printf("Arquivo texto resultante do processamento do "+listOfHtml.get(i).getName() +" gerado pelo plugin CodePro\nCAMPOS;value\n\n");
 				for(int j=0;j<list.size();j++){
 					gravarArq.printf("%s;\"%s\"\n",list.get(j).getName(),list.get(j).getAvg());
 				}		
