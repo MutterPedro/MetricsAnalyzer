@@ -35,13 +35,13 @@ public class Analyzer {
 			for(int i=0;i<listOfXml.size();i++){
 				System.out.println("Analisando o arquivo "+listOfXml.get(i).getName()+" ...");
 				List<Metric> list = RetrieveFromXml.getMetrics(listOfXml.get(i));			
-				String name = listOfXml.get(i).getName().split(".xml")[0]+"_Analise.txt";
+				String name = listOfXml.get(i).getName().split(".xml")[0]+"_Analise.csv";
 				
 				FileWriter arq = new FileWriter(folder.getPath()+"/"+name); 
 				PrintWriter gravarArq = new PrintWriter(arq); 
-				gravarArq.printf("Arquivo texto resultante do processamento do "+listOfXml.get(i).getName() +" gerado pelo plugin Metrics\nCAMPOS:\n\n");
+				gravarArq.printf("Arquivo texto resultante do processamento do "+listOfXml.get(i).getName() +" gerado pelo plugin Metrics\nCAMPOS;avg/value;stddev;max\n\n");
 				for(int j=0;j<list.size();j++){
-					gravarArq.printf("%s: %s;%s;%s\n",list.get(j).getName(),list.get(j).getAvg(),list.get(j).getStddev(),list.get(j).getMax());
+					gravarArq.printf("%s;\"%s\";\"%s\";\"%s\"\n",list.get(j).getName(),list.get(j).getAvg(),list.get(j).getStddev(),list.get(j).getMax());
 				}		
 				arq.close();
 			}
@@ -54,13 +54,13 @@ public class Analyzer {
 			for(int i=0;i<listOfHtml.size();i++){
 				System.out.println("Analisando o arquivo "+listOfHtml.get(i).getName()+" ...");
 				List<Metric> list = RetrieveFromHtml.getMetrics(listOfHtml.get(i));
-				String name = listOfHtml.get(i).getName().split(".html")[0]+"_Analise.txt";
+				String name = listOfHtml.get(i).getName().split(".html")[0]+"_Analise.csv";
 				
 				FileWriter arq = new FileWriter(folder.getPath()+"/"+name); 
 				PrintWriter gravarArq = new PrintWriter(arq); 
-				gravarArq.printf("Arquivo texto resultante do processamento do "+listOfHtml.get(i).getName() +" gerado pelo plugin CodePro\nCAMPOS:\n\n");
+				gravarArq.printf("Arquivo texto resultante do processamento do "+listOfHtml.get(i).getName() +" gerado pelo plugin CodePro\nCAMPOS;avg/value;stddev;max\n\n");
 				for(int j=0;j<list.size();j++){
-					gravarArq.printf("%s: %s\n",list.get(j).getName(),list.get(j).getAvg());
+					gravarArq.printf("%s;\"%s\"\n",list.get(j).getName(),list.get(j).getAvg());
 				}		
 				arq.close();
 			}
